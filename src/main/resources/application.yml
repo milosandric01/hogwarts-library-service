@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: hogwarts-library
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/hogwarts_library
+    username: root
+    password: root
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/structure, classpath:db/migration/data
+    validate-on-migrate: true
