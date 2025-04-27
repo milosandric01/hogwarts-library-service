@@ -1,0 +1,59 @@
+package com.homework.hogwartslibrary.domain.service;
+
+import com.homework.hogwartslibrary.domain.Book;
+import com.homework.hogwartslibrary.domain.BookRepository;
+import com.homework.hogwartslibrary.domain.BookType;
+import com.homework.hogwartslibrary.infrastructure.BookEntity;
+import lombok.RequiredArgsConstructor;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@RequiredArgsConstructor
+public class InventoryServiceImpl implements InventoryService {
+
+    private final BookRepository bookRepository;
+
+    @Override
+    public void addBook(String title, String author, double basePrice, BookType type, int stockQuantity) {
+
+        final Book book = Book.builder().title(title)
+                .author(author)
+                .basePrice(BigDecimal.valueOf(basePrice))
+                .type(type)
+                .stockQuantity(stockQuantity)
+                .available(stockQuantity > 0)
+                .build();
+
+        bookRepository.save(book);
+    }
+
+    @Override
+    public void updateBook(UUID id, String title, String author, double basePrice, BookType type, int stockQuantity) {
+        final UUID bookId = bookRepository.findById(id).map(BookEntity::getId).orElseThrow();
+
+        final Book book = Book.builder().title(title)
+                .author(author)
+                .basePrice(BigDecimal.valueOf(basePrice))
+                .type(type)
+                .stockQuantity(stockQuantity)
+                .available(stockQuantity > 0)
+                .build();
+
+        bookRepository.update(bookId, book);
+    }
+
+    @Override
+    public void removeBook(final UUID id) {
+        final UUID bookId = bookRepository.findById(id).map(BookEntity::getId).orElseThrow();
+
+        bookRepository.delete(bookId);
+    }
+
+    @Override
+    public List<BookEntity> getAvailableBooks() {
+        return bookRepository.fetchAvailable();
+    }
+}
