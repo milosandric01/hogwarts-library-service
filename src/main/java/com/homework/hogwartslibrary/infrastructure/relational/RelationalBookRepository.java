@@ -5,8 +5,6 @@ import com.homework.hogwartslibrary.domain.BookRepository;
 import com.homework.hogwartslibrary.infrastructure.BookEntity;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
-import org.jooq.Record1;
-import org.jooq.Result;
 import org.jooq.generated.tables.records.BookRecord;
 import org.springframework.stereotype.Repository;
 
@@ -19,20 +17,27 @@ import static org.jooq.generated.tables.Book.BOOK;
 
 @Repository
 @RequiredArgsConstructor
-public class RelationalDbBookRepository implements BookRepository {
+public class RelationalBookRepository implements BookRepository {
 
     private final DSLContext dslContext;
 
     @Override
-    public void save(final Book book) {
+    public BookEntity save(final Book book) {
+        final String id = UUID.randomUUID().toString();
         dslContext.insertInto(BOOK, BOOK.ID, BOOK.AUTHOR, BOOK.TITLE, BOOK.TYPE,
                         BOOK.BASE_PRICE, BOOK.STOCK_QUANTITY)
-                .values(UUID.randomUUID().toString(), "von Goethe", "afda", "adfa", new BigDecimal(3), 3)
+                .values(id, book.getAuthor(), book.getTitle(), book.getType().name(), book.getBasePrice(), book.getStockQuantity())
                 .execute();
+
+        final BookRecord savedBook = dslContext.selectFrom(BOOK)
+                .where(BOOK.ID.eq(id))
+                .fetchOne();
+
+        return new BookEntity(savedBook);
     }
 
     @Override
-    public void update(final UUID id, final Book book) {
+    public BookEntity update(final UUID id, final Book book) {
         dslContext.update(BOOK)
                 .set(BOOK.TITLE, book.getTitle())
                 .set(BOOK.AUTHOR, book.getAuthor())
@@ -41,6 +46,12 @@ public class RelationalDbBookRepository implements BookRepository {
                 .set(BOOK.STOCK_QUANTITY, book.getStockQuantity())
                 .where(BOOK.ID.eq(id.toString()))
                 .execute();
+
+        final BookRecord savedBook = dslContext.selectFrom(BOOK)
+                .where(BOOK.ID.eq(id.toString()))
+                .fetchOne();
+
+        return new BookEntity(savedBook);
     }
 
     @Override

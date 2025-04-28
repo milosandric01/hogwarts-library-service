@@ -7,9 +7,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface BookRepository {
-    void save(Book book);
+    BookEntity save(Book book);
 
-    void update(UUID id, Book book);
+    BookEntity update(UUID id, Book book);
 
     void delete(UUID id);
 

@@ -1,4 +1,4 @@
-CREATE TABLE Customer
+CREATE TABLE customer
 (
     id             CHAR(36) PRIMARY KEY,
     name           VARCHAR(255) NOT NULL,

@@ -17,9 +17,10 @@ public class InventoryServiceImpl implements InventoryService {
     private final BookRepository bookRepository;
 
     @Override
-    public void addBook(String title, String author, double basePrice, BookType type, int stockQuantity) {
+    public BookEntity addBook(final String title, final String author, final double basePrice, final BookType type, final int stockQuantity) {
 
-        final Book book = Book.builder().title(title)
+        final Book book = Book.builder()
+                .title(title)
                 .author(author)
                 .basePrice(BigDecimal.valueOf(basePrice))
                 .type(type)
@@ -27,11 +28,11 @@ public class InventoryServiceImpl implements InventoryService {
                 .available(stockQuantity > 0)
                 .build();
 
-        bookRepository.save(book);
+        return bookRepository.save(book);
     }
 
     @Override
-    public void updateBook(UUID id, String title, String author, double basePrice, BookType type, int stockQuantity) {
+    public BookEntity updateBook(UUID id, String title, String author, double basePrice, BookType type, int stockQuantity) {
         final UUID bookId = bookRepository.findById(id).map(BookEntity::getId).orElseThrow();
 
         final Book book = Book.builder().title(title)
@@ -42,7 +43,7 @@ public class InventoryServiceImpl implements InventoryService {
                 .available(stockQuantity > 0)
                 .build();
 
-        bookRepository.update(bookId, book);
+        return bookRepository.update(bookId, book);
     }
 
     @Override

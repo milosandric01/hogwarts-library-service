@@ -1,4 +1,4 @@
-package com.homework.hogwartslibrary.application.rest;
+package com.homework.hogwartslibrary.application.rest.book;
 
 import com.homework.hogwartslibrary.domain.BookType;
 import jakarta.validation.constraints.Min;

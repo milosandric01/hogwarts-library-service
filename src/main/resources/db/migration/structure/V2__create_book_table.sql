@@ -1,4 +1,4 @@
-CREATE TABLE Book
+CREATE TABLE book
 (
     id             CHAR(36) PRIMARY KEY,
     title          VARCHAR(255)   NOT NULL,

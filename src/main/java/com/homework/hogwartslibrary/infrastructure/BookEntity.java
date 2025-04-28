@@ -6,6 +6,7 @@ import org.jooq.Record2;
 import org.jooq.generated.tables.records.BookRecord;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -37,7 +38,15 @@ public class BookEntity {
         return bookRecord.getStockQuantity();
     }
 
-    public Boolean getAvailability() {
+    public boolean isAvailable() {
         return bookRecord.getAvailable() != null && bookRecord.getAvailable() != 0;
+    }
+
+    public boolean isActive() {
+        return bookRecord.getActive() != null && bookRecord.getActive() != 0;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return bookRecord.getCreatedAt();
     }
 }

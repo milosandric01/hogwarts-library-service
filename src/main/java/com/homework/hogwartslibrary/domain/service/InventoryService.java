@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface InventoryService {
-    void addBook(String title, String author, double basePrice, BookType type, int stockQuantity);
+    BookEntity addBook(String title, String author, double basePrice, BookType type, int stockQuantity);
 
-    void updateBook(UUID id, String title, String author, double basePrice, BookType type, int stockQuantity);
+    BookEntity updateBook(UUID id, String title, String author, double basePrice, BookType type, int stockQuantity);
 
     void removeBook(UUID id);
 
