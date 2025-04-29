@@ -1,7 +1,5 @@
 package com.homework.hogwartslibrary.domain;
 
-import com.homework.hogwartslibrary.domain.BookType;
-import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,6 +14,5 @@ public class Book {
     private String author;
     private BigDecimal basePrice;
     private BookType type;
-    private Integer stockQuantity;
-    private Boolean available;
+    private boolean active;
 }

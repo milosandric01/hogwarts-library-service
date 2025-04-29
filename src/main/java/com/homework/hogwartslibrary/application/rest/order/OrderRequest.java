@@ -1,5 +1,6 @@
 package com.homework.hogwartslibrary.application.rest.order;
 
+import com.homework.hogwartslibrary.domain.BookType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -15,6 +16,6 @@ public class OrderRequest {
     @NotEmpty(message = "Book ids must not be empty")
     private List<UUID> books;
 
-    @NotNull(message = "Choice to use loyalty points must not be null")
-    private Boolean useLoyaltyPoints;
+    @NotNull(message = "Loyalty discount book type must not be null")
+    private BookType loyaltyDiscountBookType;
 }

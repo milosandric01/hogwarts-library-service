@@ -34,14 +34,6 @@ public class BookEntity {
         return BookType.valueOf(bookRecord.getType());
     }
 
-    public int getStockQuantity() {
-        return bookRecord.getStockQuantity();
-    }
-
-    public boolean isAvailable() {
-        return bookRecord.getAvailable() != null && bookRecord.getAvailable() != 0;
-    }
-
     public boolean isActive() {
         return bookRecord.getActive() != null && bookRecord.getActive() != 0;
     }

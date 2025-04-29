@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.jooq.generated.Tables.CUSTOMER;
+import static org.jooq.generated.tables.Book.BOOK;
 
 @Repository
 @RequiredArgsConstructor
@@ -24,5 +25,13 @@ public class RelationalCustomerRepository implements CustomerRepository {
                         .where(CUSTOMER.ID.eq(id.toString()))
                         .fetchOne()
         ).map(CustomerEntity::new);
+    }
+
+    @Override
+    public void updateLoyaltyPoints(final UUID id, final int newPoints) {
+        dslContext.update(CUSTOMER)
+                .set(CUSTOMER.LOYALTY_POINTS, newPoints)
+                .where(BOOK.ID.eq(id.toString()))
+                .execute();
     }
 }

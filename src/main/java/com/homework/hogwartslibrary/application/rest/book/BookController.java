@@ -21,7 +21,7 @@ public class BookController {
 
     @PostMapping
     ResponseEntity<BookResponse> addBook(@Valid @RequestBody final BookRequest request) {
-        final BookEntity newBook = inventoryService.addBook(request.getTitle(), request.getAuthor(), request.getBasePrice(), request.getType(), request.getStockQuantity());
+        final BookEntity newBook = inventoryService.addBook(request.getTitle(), request.getAuthor(), request.getBasePrice(), request.getType());
         final BookResponse response = new BookResponse(newBook);
 
         return new ResponseEntity<>(response, CREATED);
@@ -32,7 +32,7 @@ public class BookController {
             @PathVariable UUID id,
             @Valid @RequestBody BookRequest request) {
 
-        final BookEntity updatedBook = inventoryService.updateBook(id, request.getTitle(), request.getAuthor(), request.getBasePrice(), request.getType(), request.getStockQuantity());
+        final BookEntity updatedBook = inventoryService.updateBook(id, request.getTitle(), request.getAuthor(), request.getBasePrice(), request.getType());
         final BookResponse response = new BookResponse(updatedBook);
 
         return new ResponseEntity<>(response, CREATED);

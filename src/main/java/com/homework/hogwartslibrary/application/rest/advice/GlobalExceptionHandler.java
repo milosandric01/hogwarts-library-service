@@ -10,6 +10,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -27,6 +28,14 @@ public class GlobalExceptionHandler {
         final ErrorResponse error = new ErrorResponse(BAD_REQUEST.value(), e.getMessage());
 
         log.error("Illegal argument exception: {}", e.getMessage(), e);
+        return new ResponseEntity<>(error, BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorResponse> handleIllegalArgument(final MethodArgumentTypeMismatchException e) {
+        final ErrorResponse error = new ErrorResponse(BAD_REQUEST.value(), e.getMessage());
+
+        log.error("Method type mismatch exception: {}", e.getMessage(), e);
         return new ResponseEntity<>(error, BAD_REQUEST);
     }
 

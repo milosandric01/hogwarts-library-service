@@ -12,8 +12,10 @@ public class LoyaltyProgramServiceImpl implements LoyaltyProgramService {
     private final CustomerRepository customerRepository;
 
     @Override
-    public int getLoyaltyPoints(UUID id) {
-        final CustomerEntity customer = customerRepository.fetch(id).orElseThrow();
+    public int getLoyaltyPoints(final UUID id) {
+        final CustomerEntity customer = customerRepository.fetch(id)
+                .orElseThrow(() -> new IllegalArgumentException("Customer with ID " + id + " not found"));
+
         return customer.getLoyaltyPoints();
     }
 }

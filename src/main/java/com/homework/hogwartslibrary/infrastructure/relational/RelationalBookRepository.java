@@ -23,11 +23,15 @@ public class RelationalBookRepository implements BookRepository {
     @Override
     public BookEntity save(final Book book) {
         final String id = UUID.randomUUID().toString();
+
         dslContext.insertInto(BOOK, BOOK.ID, BOOK.AUTHOR, BOOK.TITLE, BOOK.TYPE,
-                        BOOK.BASE_PRICE, BOOK.STOCK_QUANTITY)
-                .values(id, book.getAuthor(), book.getTitle(), book.getType().name(), book.getBasePrice(), book.getStockQuantity())
+                        BOOK.BASE_PRICE, BOOK.ACTIVE)
+                .values(id, book.getAuthor(), book.getTitle(), book.getType().name(), book.getBasePrice(), (byte) 1)
                 .execute();
 
+        // Why? As Im using MySql and it does not support insert...returning
+        // which means that i need to do additional fetch to get the data.
+        // This is not too bad as its fetching by ID which is index, so its fast.
         final BookRecord savedBook = dslContext.selectFrom(BOOK)
                 .where(BOOK.ID.eq(id))
                 .fetchOne();
@@ -37,15 +41,20 @@ public class RelationalBookRepository implements BookRepository {
 
     @Override
     public BookEntity update(final UUID id, final Book book) {
+        final byte isActive = (byte) (book.isActive() ? 1 : 0);
+
         dslContext.update(BOOK)
                 .set(BOOK.TITLE, book.getTitle())
                 .set(BOOK.AUTHOR, book.getAuthor())
                 .set(BOOK.TYPE, book.getType().name())
                 .set(BOOK.BASE_PRICE, book.getBasePrice())
-                .set(BOOK.STOCK_QUANTITY, book.getStockQuantity())
+                .set(BOOK.ACTIVE, isActive)
                 .where(BOOK.ID.eq(id.toString()))
                 .execute();
 
+        // Why? As Im using MySql and it does not support insert...returning
+        // which means that i need to do additional fetch to get the data.
+        // This is not too bad as its fetching by ID which is index, so its fast.
         final BookRecord savedBook = dslContext.selectFrom(BOOK)
                 .where(BOOK.ID.eq(id.toString()))
                 .fetchOne();
@@ -73,8 +82,7 @@ public class RelationalBookRepository implements BookRepository {
     @Override
     public List<BookEntity> fetchAvailable() {
         return dslContext.selectFrom(BOOK)
-                .where(BOOK.STOCK_QUANTITY.greaterThan(0))
-                .and(BOOK.ACTIVE.eq((byte) 1))
+                .where(BOOK.ACTIVE.eq((byte) 1))
                 .orderBy(BOOK.CREATED_AT.desc())
                 .stream()
                 .map(BookEntity::new)

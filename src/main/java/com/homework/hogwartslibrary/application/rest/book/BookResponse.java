@@ -18,7 +18,6 @@ public class BookResponse {
     private BigDecimal basePrice;
     private BookType type;
     private int stockQuantity;
-    private boolean available;
     private boolean active;
     private LocalDateTime createdAt;
 
@@ -28,8 +27,6 @@ public class BookResponse {
         this.author = book.getAuthor();
         this.basePrice = book.getBasePrice();
         this.type = book.getType();
-        this.stockQuantity = book.getStockQuantity();
-        this.available = book.isAvailable();
         this.active = book.isActive();
         this.createdAt = book.getCreatedAt();
     }

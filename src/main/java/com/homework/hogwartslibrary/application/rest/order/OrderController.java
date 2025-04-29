@@ -21,9 +21,7 @@ public class OrderController {
 
     @PostMapping
     ResponseEntity<BookResponse> placeOrder(@Valid @RequestBody final OrderRequest request) {
-//        inventoryService.addBook(request.getTitle(), request.getAuthor(), request.getBasePrice(), request.getType(), request.getStockQuantity());
-//        final BookResponse response = new BookResponse(book.getId(), book.getTitle(), book.getAuthor(), book.getBasePrice(), book.getType(), book.getStockQuantity(), book.getAvailability());
-        purchaseService.purchaseBook(request.getCustomerId(), request.getBooks(), request.getUseLoyaltyPoints());
+        purchaseService.purchaseBook(request.getCustomerId(), request.getBooks(), request.getLoyaltyDiscountBookType());
         return new ResponseEntity<>(null, CREATED);
     }
 }
