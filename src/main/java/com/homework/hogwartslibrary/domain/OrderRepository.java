@@ -4,5 +4,5 @@ import java.util.UUID;
 
 public interface OrderRepository {
 
-    void save(Order order, UUID customerId);
+    void save(Order order);
 }

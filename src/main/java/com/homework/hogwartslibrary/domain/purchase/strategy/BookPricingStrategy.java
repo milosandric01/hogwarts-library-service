@@ -1,4 +1,4 @@
-package com.homework.hogwartslibrary.domain.purchase;
+package com.homework.hogwartslibrary.domain.purchase.strategy;
 
 import com.homework.hogwartslibrary.infrastructure.BookEntity;
 

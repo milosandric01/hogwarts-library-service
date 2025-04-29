@@ -13,7 +13,6 @@ CREATE TABLE order_item
     id               CHAR(36) PRIMARY KEY,
     order_id         CHAR(36)       NOT NULL,
     book_id          CHAR(36)       NOT NULL,
-    quantity         INT            NOT NULL,
     unit_price       DECIMAL(10, 2) NOT NULL,
     discounted_price DECIMAL(10, 2) NOT NULL,
     created_at       TIMESTAMP DEFAULT CURRENT_TIMESTAMP
