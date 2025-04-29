@@ -1,5 +1,7 @@
 package com.homework.hogwartslibrary.domain;
 
+import com.homework.hogwartslibrary.infrastructure.BookEntity;
+import com.homework.hogwartslibrary.infrastructure.CustomerEntity;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -14,4 +16,9 @@ public class Order {
     private BigDecimal totalPrice;
     private LocalDateTime orderDate;
     private List<OrderItem> orderItems;
+
+    public Order(final CustomerEntity customer, final List<BookEntity> bookEntities) {
+        this.customerId = customer.getId();
+
+    }
 }

@@ -1,6 +1,6 @@
 package com.homework.hogwartslibrary.application.rest.book;
 
-import com.homework.hogwartslibrary.domain.service.InventoryService;
+import com.homework.hogwartslibrary.domain.inventory.InventoryService;
 import com.homework.hogwartslibrary.infrastructure.BookEntity;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

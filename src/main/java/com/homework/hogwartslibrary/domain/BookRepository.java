@@ -16,4 +16,6 @@ public interface BookRepository {
     Optional<BookEntity> findById(UUID id);
 
     List<BookEntity> fetchAvailable();
+
+    Optional<BookEntity> fetch(UUID id);
 }

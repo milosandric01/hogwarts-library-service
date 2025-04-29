@@ -1,6 +1,6 @@
 package com.homework.hogwartslibrary.application.rest.customer;
 
-import com.homework.hogwartslibrary.domain.service.LoyaltyProgramService;
+import com.homework.hogwartslibrary.domain.loyaltyprogram.LoyaltyProgramService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

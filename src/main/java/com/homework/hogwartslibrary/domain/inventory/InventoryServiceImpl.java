@@ -1,4 +1,4 @@
-package com.homework.hogwartslibrary.domain.service;
+package com.homework.hogwartslibrary.domain.inventory;
 
 import com.homework.hogwartslibrary.domain.Book;
 import com.homework.hogwartslibrary.domain.BookRepository;
@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RequiredArgsConstructor

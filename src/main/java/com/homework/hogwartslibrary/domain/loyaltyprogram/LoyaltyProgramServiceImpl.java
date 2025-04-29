@@ -1,4 +1,4 @@
-package com.homework.hogwartslibrary.domain.service;
+package com.homework.hogwartslibrary.domain.loyaltyprogram;
 
 import com.homework.hogwartslibrary.domain.CustomerRepository;
 import com.homework.hogwartslibrary.infrastructure.CustomerEntity;

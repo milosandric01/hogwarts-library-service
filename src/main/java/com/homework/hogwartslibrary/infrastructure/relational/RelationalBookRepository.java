@@ -8,7 +8,6 @@ import org.jooq.DSLContext;
 import org.jooq.generated.tables.records.BookRecord;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -80,5 +79,14 @@ public class RelationalBookRepository implements BookRepository {
                 .stream()
                 .map(BookEntity::new)
                 .toList();
+    }
+
+    @Override
+    public Optional<BookEntity> fetch(final UUID id) {
+        return Optional.ofNullable(
+                dslContext.selectFrom(BOOK)
+                        .where(BOOK.ID.eq(id.toString()))
+                        .fetchOne()
+        ).map(BookEntity::new);
     }
 }

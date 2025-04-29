@@ -1,5 +1,6 @@
 package com.homework.hogwartslibrary.domain;
 
+import com.homework.hogwartslibrary.domain.BookType;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;

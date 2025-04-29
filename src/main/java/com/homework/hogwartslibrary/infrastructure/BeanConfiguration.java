@@ -2,10 +2,10 @@ package com.homework.hogwartslibrary.infrastructure;
 
 import com.homework.hogwartslibrary.domain.BookRepository;
 import com.homework.hogwartslibrary.domain.CustomerRepository;
-import com.homework.hogwartslibrary.domain.service.InventoryService;
-import com.homework.hogwartslibrary.domain.service.InventoryServiceImpl;
-import com.homework.hogwartslibrary.domain.service.LoyaltyProgramService;
-import com.homework.hogwartslibrary.domain.service.LoyaltyProgramServiceImpl;
+import com.homework.hogwartslibrary.domain.inventory.InventoryService;
+import com.homework.hogwartslibrary.domain.inventory.InventoryServiceImpl;
+import com.homework.hogwartslibrary.domain.loyaltyprogram.LoyaltyProgramService;
+import com.homework.hogwartslibrary.domain.loyaltyprogram.LoyaltyProgramServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

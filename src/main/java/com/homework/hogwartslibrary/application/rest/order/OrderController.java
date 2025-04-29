@@ -1,6 +1,7 @@
 package com.homework.hogwartslibrary.application.rest.order;
 
 import com.homework.hogwartslibrary.application.rest.book.BookResponse;
+import com.homework.hogwartslibrary.domain.purchase.PurchaseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +16,14 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("/order")
 @RequiredArgsConstructor
 public class OrderController {
+
+    private final PurchaseService purchaseService;
+
     @PostMapping
     ResponseEntity<BookResponse> placeOrder(@Valid @RequestBody final OrderRequest request) {
 //        inventoryService.addBook(request.getTitle(), request.getAuthor(), request.getBasePrice(), request.getType(), request.getStockQuantity());
 //        final BookResponse response = new BookResponse(book.getId(), book.getTitle(), book.getAuthor(), book.getBasePrice(), book.getType(), book.getStockQuantity(), book.getAvailability());
-
+        purchaseService.purchaseBook(request.getCustomerId(), request.getBooks(), request.getUseLoyaltyPoints());
         return new ResponseEntity<>(null, CREATED);
     }
 }
