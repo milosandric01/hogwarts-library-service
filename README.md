@@ -44,6 +44,9 @@ service supports inventory management, dynamic pricing logic, and a loyalty syst
    mvn clean install
    java -jar target/hogwarts-library-0.0.1-SNAPSHOT.jar
 
+
+### 🐳 Postman Collection
+You can find it inside `postman` directory in project root.
 ### 🐳 Running with Docker
 
 1. **Run using Docker Compose**
