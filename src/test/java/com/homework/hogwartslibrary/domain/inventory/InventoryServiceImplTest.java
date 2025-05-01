@@ -28,7 +28,7 @@ class InventoryServiceImplTest {
     private InventoryServiceImpl inventoryService;
 
     @Test
-    void addBook_shouldSaveBookAndReturnBookEntity() {
+    void addBook_givenCorrectParams_shouldPersistBook() {
         inventoryService.addBook("The Hobbit", "Tolkien", 19.99, BookType.OLD_EDITION);
 
         final ArgumentCaptor<Book> captor = ArgumentCaptor.forClass(Book.class);
@@ -44,7 +44,7 @@ class InventoryServiceImplTest {
     }
 
     @Test
-    void updateBook_shouldUpdateAndReturnUpdatedBookEntity() {
+    void updateBook_givenNonExistentBookId_shouldThrowException() {
         final UUID id = UUID.randomUUID();
 
         when(bookRepository.findById(id)).thenReturn(Optional.empty());
@@ -55,7 +55,7 @@ class InventoryServiceImplTest {
     }
 
     @Test
-    void updateBook_shouldUpdateWithCorrectValues() {
+    void updateBook_givenCorrectParams_shouldUpdateBook() {
         final UUID id = UUID.randomUUID();
         final BookEntity existing = mock(BookEntity.class);
 
@@ -78,7 +78,7 @@ class InventoryServiceImplTest {
     }
 
     @Test
-    void removeBook_shouldThrowIfBookNotFound() {
+    void removeBook_givenNonExistentBookId_shouldThrowException() {
         final UUID id = UUID.randomUUID();
 
         when(bookRepository.findById(id)).thenReturn(Optional.empty());
@@ -89,7 +89,7 @@ class InventoryServiceImplTest {
     }
 
     @Test
-    void removeBook_shouldDeleteIfBookExists() {
+    void removeBook_givenCorrectParams_shouldUpdateBook() {
         final UUID id = UUID.randomUUID();
         final BookEntity existing = mock(BookEntity.class);
 

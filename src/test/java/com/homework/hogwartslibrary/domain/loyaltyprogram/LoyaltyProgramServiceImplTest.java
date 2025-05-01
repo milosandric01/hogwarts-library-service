@@ -25,7 +25,7 @@ class LoyaltyProgramServiceImplTest {
     private LoyaltyProgramServiceImpl loyaltyProgramService;
 
     @Test
-    void getLoyaltyPoints_shouldThrowIfCustomerNotFound() {
+    void getLoyaltyPoints_givenNotExistentCustomer_shouldThrowException() {
         final UUID customerId = UUID.randomUUID();
         when(customerRepository.fetch(customerId)).thenReturn(Optional.empty());
 
@@ -35,7 +35,7 @@ class LoyaltyProgramServiceImplTest {
     }
 
     @Test
-    void getLoyaltyPoints_shouldReturnCustomerPoints() {
+    void getLoyaltyPoints_givenCorrectCustomerId_shouldReturnCustomer() {
         final UUID customerId = UUID.randomUUID();
         final CustomerEntity customer = mock(CustomerEntity.class);
 

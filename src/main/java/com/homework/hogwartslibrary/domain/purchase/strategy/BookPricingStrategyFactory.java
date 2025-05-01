@@ -8,6 +8,7 @@ import com.homework.hogwartslibrary.domain.purchase.strategy.RegularPricingStrat
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Optional;
 
 import static com.homework.hogwartslibrary.domain.BookType.*;
 
@@ -24,8 +25,7 @@ public class BookPricingStrategyFactory {
     }
 
     public BookPricingStrategy getStrategy(final BookType type) {
-        return strategyMap.getOrDefault(type, (book, qty) -> {
-            throw new IllegalArgumentException("No book pricing strategy for type: " + type);
-        });
+        return Optional.ofNullable(strategyMap.get(type))
+                .orElseThrow(() -> new IllegalArgumentException("No book pricing strategy for type: " + type));
     }
 }

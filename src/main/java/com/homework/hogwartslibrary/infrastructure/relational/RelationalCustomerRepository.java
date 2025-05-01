@@ -31,7 +31,7 @@ public class RelationalCustomerRepository implements CustomerRepository {
     public void updateLoyaltyPoints(final UUID id, final int newPoints) {
         dslContext.update(CUSTOMER)
                 .set(CUSTOMER.LOYALTY_POINTS, newPoints)
-                .where(BOOK.ID.eq(id.toString()))
+                .where(CUSTOMER.ID.eq(id.toString()))
                 .execute();
     }
 }

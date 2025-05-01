@@ -27,7 +27,7 @@ class RegularPricingStrategyTest {
     }
 
     @Test
-    void calculatePrice_shouldApply20PercentDiscountIfLessThanThreeBooks() {
+    void calculatePrice_givenQuantityLessThanTree_shouldNotApplyAnyDiscount() {
         final BookEntity book = mock(BookEntity.class);
 
         when(book.getBasePrice()).thenReturn(BigDecimal.valueOf(100.00));
@@ -38,14 +38,13 @@ class RegularPricingStrategyTest {
     }
 
     @Test
-    void calculatePrice_shouldApply20PercentAndAdditional5PercentDiscountIfThreeOrMoreBooks() {
+    void calculatePrice_givenQuantityMoreThanTree_shouldApplyAny10pDiscount() {
         final BookEntity book = mock(BookEntity.class);
 
         when(book.getBasePrice()).thenReturn(BigDecimal.valueOf(100.00));
 
-        final BigDecimal price = strategy.calculatePrice(book, 3);
+        final BigDecimal price = strategy.calculatePrice(book, 4);
 
-        // 100 * 0.9 = 90.00
         assertEquals(BigDecimal.valueOf(90.00).setScale(2), price.setScale(2));
     }
 }

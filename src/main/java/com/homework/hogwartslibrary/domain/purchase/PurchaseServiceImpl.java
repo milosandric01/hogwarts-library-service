@@ -50,7 +50,7 @@ public class PurchaseServiceImpl implements PurchaseService {
                 .orElseThrow(() -> new IllegalArgumentException("Book with ID " + bookId + " not found"));
         final BookPricingStrategy strategy = bookPricingStrategyFactory.getStrategy(book.getType());
 
-        boolean loyaltyDiscountApplicable = isLoyaltyDiscountApplicable(loyaltyPoints, book.getType(), bookTypeToApplyLoyaltyDiscount);
+        final boolean loyaltyDiscountApplicable = isLoyaltyDiscountApplicable(loyaltyPoints, book.getType(), bookTypeToApplyLoyaltyDiscount);
         final BigDecimal price = loyaltyDiscountApplicable ? BigDecimal.ZERO : strategy.calculatePrice(book, size);
         return new OrderItem(book.getId(), book.getBasePrice(), price);
     }
@@ -64,8 +64,8 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     private void updateLoyaltyPoints(final List<OrderItem> orderItems, final CustomerEntity customer, final int earnedPoints) {
-        boolean isLoyaltyDiscountApplied = orderItems.stream().anyMatch(item -> item.getDiscountedPrice().compareTo(BigDecimal.ZERO) == 0);
-        int newPoints = isLoyaltyDiscountApplied ? 0 : customer.getLoyaltyPoints() + earnedPoints;
+        final boolean isLoyaltyDiscountApplied = orderItems.stream().anyMatch(item -> item.getDiscountedPrice().compareTo(BigDecimal.ZERO) == 0);
+        final int newPoints = isLoyaltyDiscountApplied ? 0 : customer.getLoyaltyPoints() + earnedPoints;
         customerRepository.updateLoyaltyPoints(customer.getId(), newPoints);
     }
 }

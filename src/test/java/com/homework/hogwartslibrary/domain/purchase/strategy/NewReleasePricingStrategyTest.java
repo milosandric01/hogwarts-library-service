@@ -19,8 +19,8 @@ class NewReleasePricingStrategyTest {
     private NewReleasePricingStrategy strategy;
 
     @Test
-    void calculatePrice_shouldThrowIfBookIsNull() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+    void calculatePrice_givenBookNull_shouldThrowException() {
+        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
                 strategy.calculatePrice(null, 2)
         );
 
@@ -28,7 +28,7 @@ class NewReleasePricingStrategyTest {
     }
 
     @Test
-    void calculatePrice_shouldReturnBasePrice() {
+    void calculatePrice_givenCorrectParams_shouldNeverApplyDiscount() {
         final BookEntity book = mock(BookEntity.class);
 
         when(book.getBasePrice()).thenReturn(BigDecimal.valueOf(100.00));

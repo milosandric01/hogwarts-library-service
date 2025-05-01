@@ -19,7 +19,7 @@ class OldEditionPricingStrategyTest {
     private OldEditionPricingStrategy strategy;
 
     @Test
-    void calculatePrice_shouldThrowIfBookIsNull() {
+    void calculatePrice_givenBookNull_shouldThrowException() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
                 strategy.calculatePrice(null, 3)
         );
@@ -28,7 +28,7 @@ class OldEditionPricingStrategyTest {
     }
 
     @Test
-    void calculatePrice_shouldApply20PercentDiscountIfLessThanThreeBooks() {
+    void calculatePrice_givenQuantityLessThanThree_shouldApply20pDiscount() {
         final BookEntity book = mock(BookEntity.class);
 
         when(book.getBasePrice()).thenReturn(BigDecimal.valueOf(100.00));
@@ -39,7 +39,7 @@ class OldEditionPricingStrategyTest {
     }
 
     @Test
-    void calculatePrice_shouldApply20AndAdditional5PercentDiscountIfThreeOrMoreBooks() {
+    void calculatePrice_givenQuantityBiggerThanThree_shouldApply20pDiscountPlusAdditional5p() {
         final BookEntity book = mock(BookEntity.class);
 
         when(book.getBasePrice()).thenReturn(BigDecimal.valueOf(100.00));
