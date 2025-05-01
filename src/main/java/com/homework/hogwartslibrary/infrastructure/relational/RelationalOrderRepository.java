@@ -21,7 +21,6 @@ public class RelationalOrderRepository implements OrderRepository {
 
 
     @Override
-    @Transactional
     public void save(final Order order) {
         final String orderId = UUID.randomUUID().toString();
 

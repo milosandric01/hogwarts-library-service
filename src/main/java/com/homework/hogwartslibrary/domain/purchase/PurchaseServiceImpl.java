@@ -6,6 +6,7 @@ import com.homework.hogwartslibrary.domain.purchase.strategy.BookPricingStrategy
 import com.homework.hogwartslibrary.infrastructure.BookEntity;
 import com.homework.hogwartslibrary.infrastructure.CustomerEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -25,6 +26,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     private final BookPricingStrategyFactory bookPricingStrategyFactory;
 
     @Override
+    @Transactional
     public void purchaseBook(final UUID customerId, final List<UUID> bookIds, final BookType loyaltyDiscountBookType) {
 
         final CustomerEntity customer = customerRepository.fetch(customerId)

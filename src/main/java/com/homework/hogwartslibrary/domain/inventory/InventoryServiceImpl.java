@@ -5,6 +5,7 @@ import com.homework.hogwartslibrary.domain.BookRepository;
 import com.homework.hogwartslibrary.domain.BookType;
 import com.homework.hogwartslibrary.infrastructure.BookEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +17,7 @@ public class InventoryServiceImpl implements InventoryService {
     private final BookRepository bookRepository;
 
     @Override
+    @Transactional
     public BookEntity addBook(final String title, final String author, final double basePrice, final BookType type) {
 
         final Book book = Book.builder()
@@ -30,6 +32,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    @Transactional
     public BookEntity updateBook(UUID id, String title, String author, double basePrice, BookType type) {
         final UUID bookId = bookRepository.findById(id).map(BookEntity::getId)
                 .orElseThrow(() -> new IllegalArgumentException("Book with ID " + id + " not found"));
@@ -45,6 +48,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    @Transactional
     public void removeBook(final UUID id) {
         final UUID bookId = bookRepository.findById(id).map(BookEntity::getId)
                 .orElseThrow(() -> new IllegalArgumentException("Book with ID " + id + " not found"));
