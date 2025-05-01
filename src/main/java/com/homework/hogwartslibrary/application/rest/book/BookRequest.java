@@ -25,8 +25,4 @@ public class BookRequest {
 
     @NotNull(message = "Book type must not be null")
     private BookType type;
-
-    @NotNull(message = "Stock quantity must not be null")
-    @Positive(message = "Stock quantity must be positive")
-    private Integer stockQuantity;
 }

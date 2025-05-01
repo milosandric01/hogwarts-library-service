@@ -17,7 +17,6 @@ public class BookResponse {
     private String author;
     private BigDecimal basePrice;
     private BookType type;
-    private int stockQuantity;
     private boolean active;
     private LocalDateTime createdAt;
 

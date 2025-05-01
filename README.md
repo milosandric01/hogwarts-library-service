@@ -61,12 +61,10 @@ service supports inventory management, dynamic pricing logic, and a loyalty syst
 ![img.png](img.png)
 This project follows the Hexagonal Architecture (a.k.a. Ports and Adapters) pattern to promote separation of concerns, testability, and scalability.
 
-### 🔍 Known issues
+### 🔍 Future improvements
 -	Book Type Persistence:
 Book types are currently represented as enums. While sufficient for simplicity, a dedicated database table would be more flexible and allow for dynamic extension in the future.
 -	Book Quantity Tracking:
 The system does not track the inventory count of each book. There’s no record of how many copies of a specific book exist or are available within the library.
 -	Code Quality:
-Minor issues such as typos or missing encapsulation may exist due to time constraints.
-
-💡 Given more time, these concerns would be addressed. However, the current implementation provides a solid functional and architectural foundation.
+Minor issues such as typos or unused imports may exist :) .
