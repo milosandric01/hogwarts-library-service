@@ -1,7 +1,6 @@
 package com.homework.hogwartslibrary.domain;
 
 import com.homework.hogwartslibrary.infrastructure.CustomerEntity;
-import org.jooq.generated.tables.Customer;
 
 import java.util.Optional;
 import java.util.UUID;

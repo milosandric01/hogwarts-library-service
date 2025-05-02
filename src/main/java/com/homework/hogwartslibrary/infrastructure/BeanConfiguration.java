@@ -7,9 +7,9 @@ import com.homework.hogwartslibrary.domain.inventory.InventoryService;
 import com.homework.hogwartslibrary.domain.inventory.InventoryServiceImpl;
 import com.homework.hogwartslibrary.domain.loyaltyprogram.LoyaltyProgramService;
 import com.homework.hogwartslibrary.domain.loyaltyprogram.LoyaltyProgramServiceImpl;
-import com.homework.hogwartslibrary.domain.purchase.strategy.BookPricingStrategyFactory;
 import com.homework.hogwartslibrary.domain.purchase.PurchaseService;
 import com.homework.hogwartslibrary.domain.purchase.PurchaseServiceImpl;
+import com.homework.hogwartslibrary.domain.purchase.strategy.BookPricingStrategyFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

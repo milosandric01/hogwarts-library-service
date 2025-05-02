@@ -1,11 +1,8 @@
 package com.homework.hogwartslibrary.domain.purchase.strategy;
 
-import com.homework.hogwartslibrary.domain.BookType;
 import com.homework.hogwartslibrary.infrastructure.BookEntity;
 
 import java.math.BigDecimal;
-
-import static com.homework.hogwartslibrary.domain.BookType.REGULAR;
 
 public class RegularPricingStrategy implements BookPricingStrategy {
 

@@ -1,10 +1,6 @@
 package com.homework.hogwartslibrary.domain.purchase.strategy;
 
 import com.homework.hogwartslibrary.domain.BookType;
-import com.homework.hogwartslibrary.domain.purchase.strategy.BookPricingStrategy;
-import com.homework.hogwartslibrary.domain.purchase.strategy.NewReleasePricingStrategy;
-import com.homework.hogwartslibrary.domain.purchase.strategy.OldEditionPricingStrategy;
-import com.homework.hogwartslibrary.domain.purchase.strategy.RegularPricingStrategy;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

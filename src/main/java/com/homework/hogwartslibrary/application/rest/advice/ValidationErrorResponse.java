@@ -1,6 +1,5 @@
 package com.homework.hogwartslibrary.application.rest.advice;
 
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.Map;

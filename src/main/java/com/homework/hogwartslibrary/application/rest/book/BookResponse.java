@@ -2,8 +2,6 @@ package com.homework.hogwartslibrary.application.rest.book;
 
 import com.homework.hogwartslibrary.domain.BookType;
 import com.homework.hogwartslibrary.infrastructure.BookEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;

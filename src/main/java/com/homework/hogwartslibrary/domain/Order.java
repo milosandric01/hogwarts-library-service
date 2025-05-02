@@ -1,8 +1,5 @@
 package com.homework.hogwartslibrary.domain;
 
-import com.homework.hogwartslibrary.infrastructure.BookEntity;
-import com.homework.hogwartslibrary.infrastructure.CustomerEntity;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 

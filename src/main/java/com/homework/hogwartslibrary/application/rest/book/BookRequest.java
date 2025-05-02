@@ -1,14 +1,10 @@
 package com.homework.hogwartslibrary.application.rest.book;
 
 import com.homework.hogwartslibrary.domain.BookType;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
-import org.springframework.format.annotation.NumberFormat;
-
-import java.math.BigDecimal;
 
 @Data
 public class BookRequest {

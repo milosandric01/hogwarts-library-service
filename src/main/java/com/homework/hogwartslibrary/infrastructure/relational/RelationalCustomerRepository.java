@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.jooq.generated.Tables.CUSTOMER;
-import static org.jooq.generated.tables.Book.BOOK;
 
 @Repository
 @RequiredArgsConstructor

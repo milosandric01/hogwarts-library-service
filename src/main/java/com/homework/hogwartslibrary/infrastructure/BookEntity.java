@@ -2,7 +2,6 @@ package com.homework.hogwartslibrary.infrastructure;
 
 import com.homework.hogwartslibrary.domain.BookType;
 import lombok.RequiredArgsConstructor;
-import org.jooq.Record2;
 import org.jooq.generated.tables.records.BookRecord;
 
 import java.math.BigDecimal;
