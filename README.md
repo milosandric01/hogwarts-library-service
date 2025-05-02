@@ -44,6 +44,8 @@ service supports inventory management, dynamic pricing logic, and a loyalty syst
    mvn clean install
    java -jar target/hogwarts-library-0.0.1-SNAPSHOT.jar
 
+### API Docs
+Swagger was configured for this project, so you can check API docs here: http://localhost:8080/swagger-ui/index.html (preferable in incognito window)
 
 ### Postman Collection
 You can find it inside `postman` directory in project root.
